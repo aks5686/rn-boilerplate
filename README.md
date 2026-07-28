@@ -2,37 +2,45 @@
 
 Production-ready React Native architecture boilerplate — Clean Architecture, MVVM, TypeScript (strict), Zustand, and GitHub Actions CI/CD. No Redux, no Hilt/DI frameworks — just plain TypeScript and a manual dependency container.
 
-[![RN CI](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml/badge.svg)](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml)
 ![React Native](https://img.shields.io/badge/React%20Native-0.86.2-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)
 ![Zustand](https://img.shields.io/badge/State-Zustand-443E38)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![RN CI](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml/badge.svg)](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml)
 
 ## Getting Started
 
-### 1. Create your project from this template
+### Option A: Use as a GitHub Template
 
-Click **Use this template** on GitHub, or go directly to:
-
-**https://github.com/aks5686/rn-boilerplate/generate**
-
-This creates a new repository under your account with a clean git history (no link back to this template repo).
-
-### 2. Clone and install
+Click [**Use this template**](https://github.com/aks5686/rn-boilerplate/generate) to create a new repository under your account with a clean git history (no link back to this template repo). Then clone your new repo:
 
 ```bash
 git clone https://github.com/<your-username>/<your-repo>.git
 cd <your-repo>/Boilerplate
+```
+
+### Option B: Clone manually
+
+```bash
+git clone https://github.com/aks5686/rn-boilerplate.git
+cd rn-boilerplate/Boilerplate
+```
+
+The app ships as `Boilerplate` / `com.boilerplate`. Rename it with a tool such as [`react-native-rename`](https://github.com/junedomingo/react-native-rename):
+
+```bash
+npx react-native-rename "YourAppName" -b com.yourcompany.yourapp
+```
+
+### Running the project locally
+
+```bash
 npm install
 
 # iOS only
 bundle install
 cd ios && bundle exec pod install && cd ..
-```
 
-### 3. Run the app
-
-```bash
 # Metro bundler
 npm start
 
@@ -41,14 +49,6 @@ npm run ios
 
 # Android
 npm run android
-```
-
-### 4. Rename the project (optional)
-
-The app ships as `Boilerplate` / `com.boilerplate`. Rename it with a tool such as [`react-native-rename`](https://github.com/junedomingo/react-native-rename):
-
-```bash
-npx react-native-rename "YourAppName" -b com.yourcompany.yourapp
 ```
 
 ## Architecture
