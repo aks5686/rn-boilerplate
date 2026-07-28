@@ -26,7 +26,7 @@ git clone https://github.com/aks5686/rn-boilerplate.git
 cd rn-boilerplate/Boilerplate
 ```
 
-The app ships as `Boilerplate` / `com.boilerplate`. Rename it with a tool such as [`react-native-rename`](https://github.com/junedomingo/react-native-rename):
+The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename it with a tool such as [`react-native-rename`](https://github.com/junedomingo/react-native-rename):
 
 ```bash
 npx react-native-rename "YourAppName" -b com.yourcompany.yourapp
