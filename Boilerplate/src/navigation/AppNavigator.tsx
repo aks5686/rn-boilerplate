@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,7 +30,7 @@ type AuthState = 'checking' | 'authenticated' | 'unauthenticated';
  * Root navigator. Decides the initial route by checking for a persisted
  * session via the auth use case, then renders the appropriate stack.
  */
-export function AppNavigator(): React.JSX.Element {
+function AppNavigator(): React.JSX.Element {
   const [authState, setAuthState] = useState<AuthState>('checking');
 
   useEffect(() => {
@@ -87,3 +89,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background.primary,
   },
 });
+
+export default AppNavigator;
