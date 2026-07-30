@@ -44,3 +44,16 @@ export interface AuthUseCaseProtocol {
   isAuthenticated(): Promise<boolean>;
   refreshSession(): Promise<AuthSession | null>;
 }
+
+/**
+ * Data-layer contract consumed by `AuthUseCase`. Both the real,
+ * network-backed `AuthRepository` and the local `MockAuthRepository`
+ * implement this, so the use case can be wired to either without changes.
+ */
+export interface AuthRepositoryProtocol {
+  login(credentials: LoginCredentials): Promise<AuthSession>;
+  register(credentials: RegisterCredentials): Promise<AuthSession>;
+  logout(): Promise<void>;
+  getCurrentUser(): Promise<User | null>;
+  refreshSession(refreshToken: string): Promise<AuthSession | null>;
+}

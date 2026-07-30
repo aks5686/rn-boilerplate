@@ -1,8 +1,8 @@
 import { ApiError, ApiErrorType } from '../../../core/network/ApiError';
 import { SecureStorage } from '../../../core/storage/SecureStorage';
 import { isValidEmail, isBlank } from '../../../core/extensions/stringExtensions';
-import { AuthRepository } from '../data/AuthRepository';
 import {
+  AuthRepositoryProtocol,
   AuthSession,
   AuthUseCaseProtocol,
   LoginCredentials,
@@ -18,7 +18,7 @@ const MIN_PASSWORD_LENGTH = 8;
  * and persistence details.
  */
 export class AuthUseCase implements AuthUseCaseProtocol {
-  constructor(private readonly authRepository: AuthRepository) {}
+  constructor(private readonly authRepository: AuthRepositoryProtocol) {}
 
   async login(credentials: LoginCredentials): Promise<AuthSession> {
     this.validateLoginCredentials(credentials);

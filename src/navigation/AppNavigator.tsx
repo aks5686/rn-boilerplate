@@ -5,6 +5,7 @@ import { ActivityIndicator, View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LoginScreen } from '../features/auth/presentation/LoginScreen';
+import { HomeScreen } from '../features/home/presentation/HomeScreen';
 import { AppModule } from '../di/AppModule';
 import { colors } from '../designSystem/colors';
 
@@ -14,15 +15,6 @@ export type RootStackParamList = {
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
-
-/**
- * Placeholder authenticated landing screen. Replace with the real Home
- * feature once it exists; kept here so the navigator is runnable out of
- * the box.
- */
-function HomeScreen(): React.JSX.Element {
-  return <View style={styles.center} />;
-}
 
 type AuthState = 'checking' | 'authenticated' | 'unauthenticated';
 

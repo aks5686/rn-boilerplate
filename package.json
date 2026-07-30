@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "npm install && cd ios && pod install && cd .. && npx react-native run-ios",
+    "android": "npm install && npx react-native run-android",
+    "clean": "rm -rf node_modules && rm -rf ios/Pods && rm -rf ios/Podfile.lock && rm -rf /tmp/metro-* && rm -rf android/.gradle",
+    "start": "npx react-native start",
     "lint": "eslint .",
-    "start": "react-native start",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },

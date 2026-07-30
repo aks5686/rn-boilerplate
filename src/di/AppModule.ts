@@ -1,6 +1,6 @@
 import { NetworkClient } from '../core/network/NetworkClient';
 import { SecureStorage } from '../core/storage/SecureStorage';
-import { AuthRepository } from '../features/auth/data/AuthRepository';
+import { MockAuthRepository } from '../features/auth/data/MockAuthRepository';
 import { AuthUseCase } from '../features/auth/domain/AuthUseCase';
 import { AuthUseCaseProtocol } from '../features/auth/domain/AuthUseCaseProtocol';
 
@@ -24,12 +24,12 @@ const API_BASE_URL = 'https://api.boilerplate.example.com/v1';
  */
 class AppModuleContainer {
   private _networkClient?: NetworkClient;
-  private _authRepository?: AuthRepository;
+  private _authRepository?: MockAuthRepository;
   private _authUseCase?: AuthUseCaseProtocol;
 
   private overrides: Partial<{
     networkClient: NetworkClient;
-    authRepository: AuthRepository;
+    authRepository: MockAuthRepository;
     authUseCase: AuthUseCaseProtocol;
   }> = {};
 
@@ -50,10 +50,10 @@ class AppModuleContainer {
     return this._networkClient;
   }
 
-  get authRepository(): AuthRepository {
+  get authRepository(): MockAuthRepository {
     if (this.overrides.authRepository) return this.overrides.authRepository;
     if (!this._authRepository) {
-      this._authRepository = new AuthRepository(this.networkClient);
+      this._authRepository = new MockAuthRepository();
     }
     return this._authRepository;
   }

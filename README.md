@@ -10,46 +10,56 @@ Production-ready React Native architecture boilerplate — Clean Architecture, M
 
 ## Getting Started
 
-### Option A: Use as a GitHub Template
+### 1. Create a repo from this template
 
-Click [**Use this template**](https://github.com/aks5686/rn-boilerplate/generate) to create a new repository under your account with a clean git history (no link back to this template repo). Then clone your new repo:
+Click [**Use this template**](https://github.com/aks5686/rn-boilerplate/generate) to create a new repository under your account with a clean git history (no link back to this template repo).
+
+### 2. Clone it locally
 
 ```bash
 git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>/Boilerplate
+cd <your-repo>
 ```
 
-### Option B: Clone manually
+### 3. Commit before renaming
+
+`setup.sh` renames files and folders throughout the project, so start from a clean working tree — commit or stash any local changes first. This also gives you a clear diff to review after renaming, and an easy point to revert to if something looks off.
+
+### 4. Run the setup script
+
+The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename every occurrence — package.json, app.json, Android (`applicationId`, package folders, manifest, strings.xml) and iOS (Xcode project, scheme, bundle ID, `Info.plist`, `AppDelegate`) — with:
 
 ```bash
-git clone https://github.com/aks5686/rn-boilerplate.git
-cd rn-boilerplate/Boilerplate
+./setup.sh YourAppName
 ```
 
-The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename it with a tool such as [`react-native-rename`](https://github.com/junedomingo/react-native-rename):
+### 5. Run the app
 
 ```bash
-npx react-native-rename "YourAppName" -b com.yourcompany.yourapp
-```
-
-### Running the project locally
-
-```bash
-npm install
-
-# iOS only
-bundle install
-cd ios && bundle exec pod install && cd ..
-
-# Metro bundler
-npm start
-
-# iOS
+# iOS — installs npm deps, runs pod install, then launches the iOS app
 npm run ios
 
-# Android
+# Android — installs npm deps, then launches the Android app
 npm run android
 ```
+
+On iOS, `bundle install` (Ruby/CocoaPods) is a one-time prerequisite before the first `npm run ios`:
+
+```bash
+bundle install
+```
+
+### Available scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run ios` | `npm install`, then `pod install`, then builds and runs the iOS app |
+| `npm run android` | `npm install`, then builds and runs the Android app |
+| `npm start` | Starts the Metro bundler |
+| `npm run clean` | Removes `node_modules`, `ios/Pods`, `ios/Podfile.lock`, `android/.gradle`, and stale Metro caches in `/tmp` — use when builds get into a bad state |
+| `npm run lint` | Runs ESLint |
+| `npm run typecheck` | Runs `tsc --noEmit` |
+| `npm test` | Runs the Jest test suite |
 
 ## Architecture
 
@@ -77,9 +87,10 @@ This boilerplate follows **Clean Architecture** with an **MVVM** presentation la
 ## Folder Structure
 
 ```
-Boilerplate/
+.
 ├── android/                       # Native Android project
 ├── ios/                           # Native iOS project
+├── setup.sh                       # Renames the project (Boilerplate -> YourAppName)
 ├── src/
 │   ├── core/
 │   │   ├── network/
@@ -93,10 +104,12 @@ Boilerplate/
 │   ├── di/
 │   │   └── AppModule.ts           # Manual DI container (lazy singletons)
 │   ├── features/
-│   │   └── auth/
-│   │       ├── domain/            # AuthUseCaseProtocol, AuthUseCase
-│   │       ├── data/               # AuthRepository
-│   │       └── presentation/       # LoginViewModel (Zustand), LoginScreen (View)
+│   │   ├── auth/
+│   │   │   ├── domain/             # AuthUseCaseProtocol, AuthUseCase
+│   │   │   ├── data/                # AuthRepository, MockAuthRepository
+│   │   │   └── presentation/        # LoginViewModel (Zustand), LoginScreen (View)
+│   │   └── home/
+│   │       └── presentation/        # HomeScreen (View)
 │   ├── designSystem/
 │   │   ├── colors.ts               # Color tokens
 │   │   ├── typography.ts           # Type scale tokens
