@@ -36,24 +36,20 @@ The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename every occurrence 
 ### 5. Run the app
 
 ```bash
-# iOS — installs npm deps, runs pod install, then launches the iOS app
+# iOS — installs npm deps, installs Ruby/CocoaPods gems, runs pod install, then launches the iOS app
 npm run ios
-
-# Android — installs npm deps, then launches the Android app
-npm run android
 ```
 
-On iOS, `bundle install` (Ruby/CocoaPods) is a one-time prerequisite before the first `npm run ios`:
-
 ```bash
-bundle install
+# Android — installs npm deps, then launches the Android app
+npm run android
 ```
 
 ### Available scripts
 
 | Script | What it does |
 | --- | --- |
-| `npm run ios` | `npm install`, then `pod install`, then builds and runs the iOS app |
+| `npm run ios` | `npm install`, then `bundle install`, then `pod install`, then builds and runs the iOS app |
 | `npm run android` | `npm install`, then builds and runs the Android app |
 | `npm start` | Starts the Metro bundler |
 | `npm run clean` | Removes `node_modules`, `ios/Pods`, `ios/Podfile.lock`, `android/.gradle`, and stale Metro caches in `/tmp` — use when builds get into a bad state |
