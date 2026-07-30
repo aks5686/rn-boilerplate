@@ -35,13 +35,13 @@ The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename every occurrence 
 
 ### 5. Run the app
 
+iOS — installs npm deps, installs Ruby/CocoaPods gems, runs pod install, then launches the iOS app
 ```bash
-# iOS — installs npm deps, installs Ruby/CocoaPods gems, runs pod install, then launches the iOS app
 npm run ios
 ```
 
+Android — installs npm deps, then launches the Android app
 ```bash
-# Android — installs npm deps, then launches the Android app
 npm run android
 ```
 
