@@ -1,61 +1,45 @@
 # rn-boilerplate
 
-Production-ready React Native architecture boilerplate — Clean Architecture, MVVM, TypeScript (strict), Zustand, and GitHub Actions CI/CD. No Redux, no Hilt/DI frameworks — just plain TypeScript and a manual dependency container.
-
 ![React Native](https://img.shields.io/badge/React%20Native-0.86.2-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)
-![Zustand](https://img.shields.io/badge/State-Zustand-443E38)
+![iOS & Android](https://img.shields.io/badge/platform-iOS%20%26%20Android-lightgrey)
+![Node](https://img.shields.io/badge/Node-22%2B-339933?logo=node.js)
 ![License](https://img.shields.io/badge/license-MIT-green)
 [![RN CI](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml/badge.svg)](https://github.com/aks5686/rn-boilerplate/actions/workflows/rn.yml)
 
+Production-ready React Native boilerplate with Clean Architecture, MVVM, TypeScript, async/await and GitHub Actions CI/CD.
+
 ## Getting Started
 
-### 1. Create a repo from this template
+1. Click [**Use this template**](https://github.com/aks5686/rn-boilerplate/generate) on GitHub.
+2. Clone your repo locally:
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo>.git
+   cd <your-repo>
+   ```
+3. Run the setup script with your app name in PascalCase, no spaces:
+   ```bash
+   ./setup.sh YourAppName
+   ```
+   Example:
+   ```bash
+   ./setup.sh MyAwesomeApp
+   ```
+4. Run the app:
+   ```bash
+   npm run ios
+   # or
+   npm run android
+   ```
 
-Click [**Use this template**](https://github.com/aks5686/rn-boilerplate/generate) to create a new repository under your account with a clean git history (no link back to this template repo).
-
-### 2. Clone it locally
-
-```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-```
-
-### 3. Commit before renaming
-
-`setup.sh` renames files and folders throughout the project, so start from a clean working tree — commit or stash any local changes first. This also gives you a clear diff to review after renaming, and an easy point to revert to if something looks off.
-
-### 4. Run the setup script
-
-The app ships as `Boilerplate` / `com.aks.boilerplate`. Rename every occurrence — package.json, app.json, Android (`applicationId`, package folders, manifest, strings.xml) and iOS (Xcode project, scheme, bundle ID, `Info.plist`, `AppDelegate`) — with:
-
-```bash
-./setup.sh YourAppName
-```
-
-### 5. Run the app
-
-iOS — installs npm deps, installs Ruby/CocoaPods gems, runs pod install, then launches the iOS app
-```bash
-npm run ios
-```
-
-Android — installs npm deps, then launches the Android app
-```bash
-npm run android
-```
-
-### Available scripts
+## Available Scripts
 
 | Script | What it does |
 | --- | --- |
-| `npm run ios` | `npm install`, then `bundle install`, then `pod install`, then builds and runs the iOS app |
-| `npm run android` | `npm install`, then builds and runs the Android app |
-| `npm start` | Starts the Metro bundler |
-| `npm run clean` | Removes `node_modules`, `ios/Pods`, `ios/Podfile.lock`, `android/.gradle`, and stale Metro caches in `/tmp` — use when builds get into a bad state |
-| `npm run lint` | Runs ESLint |
-| `npm run typecheck` | Runs `tsc --noEmit` |
-| `npm test` | Runs the Jest test suite |
+| `npm run ios` | Installs dependencies, runs `pod install`, launches the iOS app |
+| `npm run android` | Installs dependencies, launches the Android app |
+| `npm run clean` | Removes `node_modules`, `Pods`, `Podfile.lock`, and Metro/Gradle caches |
+| `npm run start` | Starts the Metro bundler only |
 
 ## Architecture
 
