@@ -17,18 +17,15 @@ Production-ready React Native boilerplate with Clean Architecture, MVVM, TypeScr
    git clone https://github.com/<your-username>/<your-repo>.git
    cd <your-repo>
    ```
-3. Run the setup script with your app name in PascalCase, no spaces:
+3. Run:
    ```bash
    ./setup.sh YourAppName
-   ```
-   Example:
-   ```bash
-   ./setup.sh MyAwesomeApp
    ```
 4. Run the app:
    ```bash
    npm run ios
-   # or
+   ```
+   ```bash
    npm run android
    ```
 
