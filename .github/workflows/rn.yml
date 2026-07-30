@@ -77,6 +77,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Accept Android SDK licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;29.0.13113456" || true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -92,11 +97,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: Accept Android SDK licenses and install NDK
-        run: |
-          yes | sdkmanager --licenses || true
-          sdkmanager "ndk;29.0.13113456" || true
 
       - name: Build Android (Debug)
         working-directory: android
