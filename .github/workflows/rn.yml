@@ -93,8 +93,10 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Accept Android SDK licenses
-        run: yes | sdkmanager --licenses || true
+      - name: Accept Android SDK licenses and install NDK
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager "ndk;29.0.13113456" || true
 
       - name: Build Android (Debug)
         working-directory: android
